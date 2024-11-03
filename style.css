@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black; /* Fallback color */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the full image fits without cropping */
+    z-index: 1;
+}
+
+.overlay-text {
+    position: relative;
+    color: white; /* Adjust if needed */
+    font-size: 2em;
+    max-width: 90%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 2;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.cursor-symbol, .cursor {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.cursor {
+    width: 10px;
+    height: 20px;
+    background-color: white; /* Matches text color */
+    margin-left: 5px; /* Space between text and cursor */
+    animation: blink .9s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
