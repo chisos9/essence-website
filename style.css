@@ -72,6 +72,7 @@ body, html {
     color: white;
     z-index: 2;
     font-family: 'Courier New', Courier, monospace;
+    line-height: 1.35;
 }
 
 .page-footer a {
