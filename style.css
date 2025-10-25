@@ -17,6 +17,9 @@ body, html {
     height: 100vh;
     background-color: black; /* Fallback color */
 }
+@supports (height: 100dvh) {
+  .container { height: 100dvh; } /* visible viewport height on iOS */
+}
 
 .background-image {
     position: absolute;
@@ -64,18 +67,17 @@ body, html {
 }
 
 .page-footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
+    position: fixed;              /* was: absolute */
+    left: 0;
+    right: 0;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    padding: 4px 12px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: clamp(0.72rem, 1.6vw, 0.9rem);
+    line-height: 1.4;
     color: white;
-    z-index: 2;
+    z-index: 3;
     font-family: 'Courier New', Courier, monospace;
-    line-height: 1.35;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
 }
-
-.page-footer a {
-    color: white;
-    text-decoration: underline;
-}
+.page-footer a { color: white; text-decoration: underline; }
