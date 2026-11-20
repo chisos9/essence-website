@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micronesian navigation &mdash; Essence</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:400 19px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+  /* a page of notes for the Caroline voyage, 2024 notebook, faded to a watermark (8%) */
+  .ground{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .ground img{width:100%;height:100%;object-fit:cover;display:block}
+
+  main{
+    position:relative;z-index:1;
+    max-width:33em;margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,40px) clamp(56px,10vw,120px);
+  }
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+  header{margin-bottom:clamp(32px,6vw,56px)}
+  .eyebrow{margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+  h1{margin:0;font-weight:400;font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:.01em;line-height:1.15}
+  h1::after{content:"";display:block;width:3.2em;height:1px;background:var(--rule);margin-top:.85em}
+
+  h2{
+    margin:clamp(36px,6vw,52px) 0 .9em;
+    font-weight:400;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  ul{list-style:none;margin:0;padding:0}
+  li{margin:0 0 1.1em}
+  li a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .2s ease}
+  li a:hover,li a:focus-visible{border-bottom-color:var(--ink);outline:none}
+  .src{display:block;font-size:.8rem;line-height:1.45;color:var(--ink-soft);margin-top:.15em}
+  .lit li{padding-left:1.4em;text-indent:-1.4em;line-height:1.5}   /* hanging indent */
+
+  @media (max-width:640px){body{font-size:17.5px}}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true"><img src="bg-references.jpg" alt=""></div>
+
+  <main>
+    <a class="back" href="../">&larr; Back to essence.info</a>
+
+    <header>
+      <p class="eyebrow">Essence</p>
+      <h1>Micronesian navigation</h1>
+    </header>
+
+    <h2>Literature</h2>
+    <ul class="lit">
+      <li>Ward H. Goodenough, <a href="https://www.penn.museum/documents/publications/pdfs/Native_Astronomy_in_the_Central_Carolines.pdf" target="_blank" rel="noopener noreferrer"><em>Native Astronomy in the Central Carolines</em></a>. Museum Monographs. Philadelphia: The University Museum, University of Pennsylvania, 1953.</li>
+      <li>Thomas Gladwin, <em>East Is a Big Bird: Navigation and Logic on Puluwat Atoll</em>. Harvard University Press, 1970.</li>
+      <li>David Lewis, <em>We, the Navigators: The Ancient Art of Landfinding in the Pacific</em>. University Press of Hawaii, 1972.</li>
+      <li>Saul H. Riesenberg, <a href="https://nach.gov.fm/wp-content/uploads/2019/01/riesenberg-1972-the-organization-of-navigational-knowledge-on-puluwat.pdf" target="_blank" rel="noopener noreferrer">&ldquo;The Organisation of Navigational Knowledge on Puluwat&rdquo;</a>. <em>Journal of the Polynesian Society</em> 81(1), 1972.</li>
+      <li>Steve Thomas, <em>The Last Navigator</em>. Henry Holt, 1987.</li>
+    </ul>
+
+    <h2>Universities</h2>
+    <ul>
+      <li><a href="https://www.uog.edu/student-services/rfk-library/island-wisdom" target="_blank" rel="noopener noreferrer">University of Guam</a>
+        <span class="src">Sharing Island Wisdom: Micronesian seafaring</span></li>
+      <li><a href="https://www.marianas.edu/proanews/nmc-cti-and-500-sails-launch-fifth-cohort-of-traditional-navigation-program/" target="_blank" rel="noopener noreferrer">Northern Marianas College</a>
+        <span class="src">Traditional Navigation program</span></li>
+      <li><a href="https://pcc.palau.edu/2026/08/03/remembering-sesario-a-legacy-anchored-in-our-hearts/" target="_blank" rel="noopener noreferrer">Palau Community College</a>
+        <span class="src">Remembering Sesario Sewralur, Grand Master Navigator</span></li>
+    </ul>
+
+    <h2>Organizations</h2>
+    <ul>
+      <li><a href="https://habeleinstitute.org/wiki/Main_Page" target="_blank" rel="noopener noreferrer">Habele Institute</a>
+        <span class="src">Rich research and reference on Yap and the wider Micronesian region</span>
+        <span class="src">Navigation: <a href="https://habeleinstitute.org/wiki/Category:Canoes" target="_blank" rel="noopener noreferrer">https://habeleinstitute.org/wiki/Category:Canoes</a></span></li>
+      <li><a href="https://waagey.org/" target="_blank" rel="noopener noreferrer">Waa&rsquo;gey</a>
+        <span class="src">waagey.org</span></li>
+    </ul>
+
+    <h2>UNESCO</h2>
+    <ul>
+      <li><a href="https://ich.unesco.org/en/USL/carolinian-wayfinding-and-canoe-making-01735" target="_blank" rel="noopener noreferrer">Carolinian wayfinding and canoe making</a>
+        <span class="src">Intangible Cultural Heritage in Need of Urgent Safeguarding, 2021</span></li>
+    </ul>
+  </main>
+</body>
+</html>

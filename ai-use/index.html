@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI use &mdash; Essence</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:400 19px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+  /* a page from a 2024 notebook, faded to a watermark (8%) */
+  .ground{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .ground img{width:100%;height:100%;object-fit:cover;display:block}
+
+  main{
+    position:relative;z-index:1;max-width:33em;margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,40px) clamp(56px,10vw,120px);
+  }
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+  header{margin-bottom:clamp(32px,6vw,56px)}
+  .eyebrow{margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+  h1{margin:0;font-weight:400;font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:.01em;line-height:1.15}
+  h1::after{content:"";display:block;width:3.2em;height:1px;background:var(--rule);margin-top:.85em}
+  p{margin:0 0 1.35em;hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty}
+  @media (max-width:640px){body{font-size:17.5px}}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true"><img src="bg-ai-use.jpg" alt=""></div>
+
+  <main>
+    <a class="back" href="../">&larr; Back to essence.info</a>
+
+    <header>
+      <p class="eyebrow">Essence</p>
+      <h1>AI use</h1>
+    </header>
+
+    <p>Because I am not a native speaker of English, AI was an essential tool for me. But it came in only at the end. The story, the characters, the structure and every draft are my own, and no AI was involved in writing them.</p>
+    <p>I wrote the novel in draft, chapter by chapter. Some chapters existed as computer files, others in handwritten notebooks. Only when the whole draft was finished did I turn to an AI language model. I typed or pasted my text into it paragraph by paragraph and asked for several versions in return: one corrected only for grammar and idiom, and two or three recast in different prose styles. From these I composed each final paragraph myself, choosing, rejecting, editing and recombining sentences.</p>
+    <p>Once the whole novel had been through this process, I had AI check it for consistency, such as whether the timelines stated in the novel add up, and proofread it for grammar: tense mismatches, pronouns with unclear referents and similar problems. This took several passes, following a protocol I had set up beforehand, until no new problems turned up. Every change was my decision.</p>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essence &mdash; Chapter Four</title>
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font:400 19px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+
+  /* the circle from the painting, inverted and toned down to a watermark */
+  .ground{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .ground img{
+    width:min(108vmin,1150px);height:auto;display:block;
+  }
+  /* paper bleeding in at the top and bottom keeps the running text clear of the rim */
+  .ground::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,
+      var(--paper) 0%, rgba(245,242,236,0) 14%,
+      rgba(245,242,236,0) 86%, var(--paper) 100%);
+  }
+
+  main{
+    position:relative;z-index:1;
+    max-width:33em;
+    margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,40px) clamp(56px,10vw,120px);
+  }
+
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+
+  header{margin-bottom:clamp(32px,6vw,56px)}
+  .eyebrow{
+    margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1{
+    margin:0;font-weight:400;
+    font-size:clamp(1.7rem,5vw,2.5rem);
+    letter-spacing:.01em;line-height:1.15;
+  }
+  h1::after{
+    content:"";display:block;width:3.2em;height:1px;
+    background:var(--rule);margin-top:.85em;
+  }
+
+  p{margin:0 0 1.35em;text-wrap:pretty}
+  p:last-child{margin-bottom:0}
+  /* hyphenation keeps the ragged edge quiet at this measure */
+  p{hyphens:auto;-webkit-hyphens:auto}
+
+  .lede::first-letter{
+    float:left;
+    font-size:3.5em;line-height:.82;
+    padding:.06em .1em 0 0;
+    margin-right:.02em;
+  }
+
+  .colophon{
+    margin-top:clamp(48px,9vw,88px);padding-top:1.4em;
+    border-top:1px solid var(--rule);
+    font-size:.78rem;letter-spacing:.03em;color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    body{font-size:17.5px}
+    .ground img{width:130vmin}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true">
+    <img src="bg-chapter-4.jpg" alt="">
+  </div>
+
+  <main>
+    <a class="back" href="index.html">&larr; Back to the painting</a>
+
+    <!-- chapter text: start -->
+    <header>
+      <p class="eyebrow">Chapter Four</p>
+      <h1>Tim</h1>
+    </header>
+
+    <p class="lede">As children, we spent countless hours playing the game that everyone knows. Its real name is Ludiqi, but of course, nobody called it that. For us, as for everyone else, it was simply “Essence.” You were not allowed to write anything down, and Kenneth hated that. His long-term memory was much more reliable than his short-term, and his thinking was slow. Having to memorize so much in such a short time and think on his feet drove him mad, and at first we always beat him, moving faster, guessing quicker. And yet, it was Kenneth who fell in love with the game in a way none of us could have understood. He more than compensated for his weakness. You wouldn’t see him for days; he was buried in encyclopedias. He didn’t speak much about his research, which was as unfocused as it was fiercely persistent. His play improved, little by little. He no longer needed to memorize; he just knew. The game was becoming part of him, and he was transfixed.</p>
+    <p>He had built a treehouse in the large garden behind his father’s house. There was a creek that ran the length of the garden and beyond, and from Kenneth’s spot, one could look out into the distance, where the creek widened and formed an S-shape, with a little island in the middle and grassy slopes flanking the banks. The hills beyond were often snow-covered in winter. In the summer, he would move into his treehouse with his books. The flow had all the information too, but Kenneth liked books, insisting he learned better from them. When he wanted to be left alone, no one could reach him there, not his father, not me.</p>
+    <p>In the winter, his room became his sanctuary. Even now, whenever I pass by a window lit at night, I think of him. I remember giving the signal, seeing his silhouette appear in the frame. It feels like a lifetime ago.</p>
+    <p>Soon, he began making moves none of us could follow. One by one, the other children drifted away, but Rachel and I remained. There was something about his passion for the game that held us there, through the long hours he spent trying to explain his ideas. It could be tiring, but it was also fascinating to watch him work through the game, drawing up strategies, trying different moves, erasing everything, and starting over again. He entered a different state of mind in these moments; all of his indestructible boyishness, the kind he never really outgrew, was gone.</p>
+    <p>“The game is hundreds of years old,” he lectured Rachel and me. “You can use anything you know; there’s no limit to the elements of the game as long as you stick to the syntax.” His index finger tapped the old book that he had found in the library and that had helped him grow quickly beyond the limited children’s edition.</p>
+    <p>“If you’re interested, I can tell you more about its history.”</p>
+    <p>We weren’t. He tried again. “I asked my father about it, but he told me I should wait until we cover it in school. I read it anyway.”</p>
+    <p>Kenneth had borrowed two books from the library. He told his father about the boring one, knowing full well it would be confiscated. And, as expected, his father took it away. So, Kenneth lost himself in the pages of the old volume. His father’s gesture had been largely symbolic. There was no way of preventing Kenneth from getting his hands on the information. Sometimes, I wondered if his father had intended to spur him on while also warning him that the ground was unstable. In a way, the whole episode was a sign of what was coming for Kenneth.</p>
+    <p>He never had much faith in teachers or the school system. The lessons were pure misery for him, though he was curious enough. He studied at home, and he studied for the game, neglecting his homework, which he held in the quiet contempt he reserved for things that didn’t stir him. His knowledge grew along strange, winding paths, until it seemed encyclopedic in scope, but he used it so sparingly that it barely carried him through his classes. I think his performance in school at this age was the result of a combination of two things. First, he had already picked up a characteristic quirk from old hands at the game, who regard their knowledge as a tool of the trade and rarely use it for purposes other than the game, and then only with a kind of self-conscious unease. Second, half the time, he truly didn’t know the material. His studies were so aimless and erratic that any overlap with school requirements was pure coincidence.</p>
+    <p>Kenneth would often blush hard, then get even more embarrassed by how red his face was, which made the blush worse. It was a vicious cycle that took him nearly an hour to recover from. Mathematics was the one subject that defeated him. He refused to do arithmetic with anything but numbers. As soon as variables came into play, Kenneth shut down. He couldn’t help it. I never quite understood why. He failed, sometimes just barely, sometimes badly. The teacher didn’t know how to handle it and made things worse. He kept calling Kenneth to the chalkboard, asking him to solve problems like quadratic equations. That was hopeless. Kenneth would stand there, red and sweating, staring at a blank board. It never worked. The answers simply wouldn’t come. “When are you going to start learning?” the teacher asked him, of all students.</p>
+    <p>Kenneth was demoted to the lower school tier, where they happened to be studying geometry at the time, an island of sense for him in the ocean of abstract algebraic nonsense. His grades immediately jumped back into the range for the upper tier, to the surprise and confusion of the teaching staff. After one semester, he was promptly promoted back into algebra, only to see his grades plummet again. Kenneth developed something like a phobia of mathematics. It wasn’t until he began to grasp its fundamental role in Essence, around the age of eighteen, that the fog started to lift. He took up the subject, and it turned out that he was actually quite good at it. In retrospect, this wasn’t entirely unexpected. Kenneth was always sharp. But the contrast with his younger self was striking. Though he came to mathematics late, if one looks at the Essence code he wrote later in life, it’s clear that he advanced to levels even most Essence engineers never touch. His early trouble with math left him with a curiously unorthodox way of solving Essence problems. In many ways, that struggle let him see things from angles no one else could.</p>
+    <p>I knew he didn’t like the other game. He never said anything, because he knew I liked it a lot. Back then, it was called “Money”; now it’s known as “Traffic.” New versions come out regularly, keeping up with the latest teaching trends, and the game is generally better received by parents than Ludiqi. I loved the rigid structure with its twelve constant elements, simple and clear. You set the pieces of Money where you want them and see the result right away. The informational version is clean, and there are plenty of forums for it in the flow.</p>
+    <p>Essence, on the other hand, is based on moves. In Essence, you can build the same objects as in Money, and more. You can create sounds, images, smells, tastes, and temperatures. But to achieve anything, you must make a move, issuing a command that follows a strict syntax, and you only see the result after the game compiles it. Because of this, the informational version of Essence has an incredibly archaic, simple command line. You can play a complete game of Money in Essence, even modify the elements or add new ones. Kenneth showed me how to do it once. The trouble is, the pace of the game becomes sluggish because you have to use the Essence syntax. Of course, Essence also has gaming forums in the flow, but back then they were considered nerdy. All the physical versions of Ludiqi I have seen were old and showed signs of wear.</p>
+    <p>Inevitably, I would make syntax mistakes in Essence, and I spent a lot of time tracking down bugs in my moves. Even as a child, I realized that there were deep layers in Essence that scared me. Some moves could change your color perception, for example. I was always afraid I might inadvertently change something and not know how to revert it.</p>
+    <p>Still, there’s an age between nine and twelve when many children prefer Ludiqi over Traffic for a while. They usually return to Traffic sometime in puberty. I, on the other hand, probably never would have played Ludiqi at all if it hadn’t been for Kenneth.</p>
+
+    <p class="colophon">From <em>Essence</em>, a novel by Eric Hillebrand. &copy; 2026 Eric Hillebrand.</p>
+    <!-- chapter text: end -->
+  </main>
+
+</body>
+</html>

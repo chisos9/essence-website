@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essence — Sample Chapters</title>
+<style>
+  :root{
+    --ink:#0d0d10;
+    --paper:#e8e4d9;
+    --rim:255,255,255;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font:400 16px/1.55 'Courier New', Courier, monospace;   /* as on the home page */
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100vh;
+    padding:clamp(16px,4vw,48px);
+  }
+
+  /* ---- the painting + its hotspots ---------------------------------- */
+  .plate{
+    position:relative;
+    width:100%;
+    max-width:1200px;
+    margin:0;
+    line-height:0;
+  }
+  .plate img{
+    width:100%;height:auto;display:block;
+    border-radius:2px;
+    box-shadow:0 18px 60px rgba(0,0,0,.55);
+    user-select:none;-webkit-user-drag:none;
+  }
+
+  .spot{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    aspect-ratio:1/1;
+    border-radius:50%;
+    display:block;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    /* the resting state is invisible: the painting speaks for itself */
+    box-shadow:0 0 0 0 rgba(var(--rim),0);
+    transition:transform .16s cubic-bezier(.3,.7,.4,1),
+               box-shadow .22s ease,
+               filter .22s ease;
+  }
+  /* The lit ring. inset:-.75px pushes the border box out by half the border
+     width, so the stroke's CENTRELINE lands exactly on the element's radius —
+     which is the radius of the compass circle on the canvas. No outward spread
+     anywhere else, or the ring reads wider than the painted rim. */
+  .spot::before{
+    content:"";position:absolute;inset:-.75px;border-radius:50%;
+    border:1.5px solid rgba(var(--rim),0);
+    transition:border-color .22s ease, box-shadow .22s ease;
+  }
+  .spot:hover,.spot:focus-visible{
+    box-shadow:0 0 30px rgba(var(--rim),.20);   /* soft halo, no hard edge */
+  }
+  .spot:hover::before,.spot:focus-visible::before{
+    border-color:rgba(var(--rim),.42);
+    box-shadow:0 0 22px rgba(var(--rim),.16) inset;
+  }
+  .spot:focus-visible{outline:none}
+  /* the press: it sinks, the ring tightens and brightens */
+  .spot:active{
+    transform:translate(-50%,-50%) scale(.96);
+    box-shadow:0 0 22px rgba(var(--rim),.26),
+               inset 0 4px 14px rgba(0,0,0,.6);
+    filter:brightness(.9);
+    transition-duration:.06s;
+  }
+  .spot:active::before{border-color:rgba(var(--rim),.85)}
+
+  /* label that fades in with the hover */
+  .spot .label{
+    position:absolute;left:50%;top:calc(100% + 10px);
+    transform:translateX(-50%) translateY(-4px);
+    white-space:nowrap;
+    font-size:clamp(12px,1.3vw,16px);
+    letter-spacing:.06em;
+    line-height:1.2;
+    color:var(--paper);
+    background:rgba(10,10,12,.72);
+    padding:.4em .75em;border-radius:2px;
+    opacity:0;pointer-events:none;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+  .spot:hover .label,.spot:focus-visible .label{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* the bottom circle's label would fall off the canvas — put it above */
+  .spot.label-above .label{top:auto;bottom:calc(100% + 10px);}
+
+  .hint{margin:clamp(16px,3vw,28px) 0 0;font-size:.9rem;letter-spacing:.04em;opacity:.45}
+  .credit{margin:.7em 0 0;font-size:.72rem;letter-spacing:.03em;opacity:.32;text-align:center}
+  .home{margin:.5em 0 0;font-size:.72rem;letter-spacing:.03em;text-align:center}
+  .home a{color:var(--paper);text-decoration:none;opacity:.32;transition:opacity .2s ease}
+  .home a:hover,.home a:focus-visible{opacity:.7;outline:none}
+
+  @media (prefers-reduced-motion:reduce){
+    .spot,.spot::before,.spot .label{transition-duration:.01ms}
+    .spot:hover,.spot:active,.spot:focus-visible{transform:translate(-50%,-50%)}
+  }
+</style>
+</head>
+<body>
+
+  <figure class="plate">
+    <img
+      src="essence-chapters-1600.jpg"
+      srcset="essence-chapters-1200.jpg 1200w,
+              essence-chapters-1600.jpg 1600w,
+              essence-chapters-2400.jpg 2400w"
+      sizes="(max-width:1200px) 100vw, 1200px"
+      alt="Painting: three circular vignettes on a dark ground — a sailing canoe under a full moon, a figure writing at a desk, and three figures around a lamplit table with a chart.">
+
+    <!-- circle 1 — the sailing canoe under the moon -->
+    <a class="spot" href="chapter-1.html"
+       style="left:24.972%; top:27.379%; width:33.312%;"
+       aria-label="Sample chapter one: the sailing canoe">
+      <span class="label">Chapter One</span>
+    </a>
+
+    <!-- circle 2 — the figure writing at the desk -->
+    <a class="spot" href="chapter-2.html"
+       style="left:70.000%; top:30.476%; width:18.766%;"
+       aria-label="Sample chapter two: the desk">
+      <span class="label">Chapter Two</span>
+    </a>
+
+    <!-- circle 3 — the three figures at the table -->
+    <a class="spot label-above" href="chapter-4.html"
+       style="left:78.224%; top:74.296%; width:26.551%;"
+       aria-label="Sample chapter four: the table">
+      <span class="label">Chapter Four</span>
+    </a>
+  </figure>
+
+  <p class="hint">Click a circle to read</p>
+  <p class="credit">Painting: &ldquo;Three chapters&rdquo; by Eric Hillebrand, 2026, acrylic on canvas, 70&times;60&nbsp;cm</p>
+  <p class="home"><a href="../">Back to essence.info</a></p>
+
+</body>
+</html>

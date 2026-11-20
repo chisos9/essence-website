@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essence &mdash; Chapter One</title>
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font:400 19px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+
+  /* the circle from the painting, inverted and toned down to a watermark */
+  .ground{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .ground img{
+    width:min(108vmin,1150px);height:auto;display:block;
+  }
+  /* paper bleeding in at the top and bottom keeps the running text clear of the rim */
+  .ground::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,
+      var(--paper) 0%, rgba(245,242,236,0) 14%,
+      rgba(245,242,236,0) 86%, var(--paper) 100%);
+  }
+
+  main{
+    position:relative;z-index:1;
+    max-width:33em;
+    margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,40px) clamp(56px,10vw,120px);
+  }
+
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+
+  header{margin-bottom:clamp(32px,6vw,56px)}
+  .eyebrow{
+    margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1{
+    margin:0;font-weight:400;
+    font-size:clamp(1.7rem,5vw,2.5rem);
+    letter-spacing:.01em;line-height:1.15;
+  }
+  h1::after{
+    content:"";display:block;width:3.2em;height:1px;
+    background:var(--rule);margin-top:.85em;
+  }
+
+  p{margin:0 0 1.35em;text-wrap:pretty}
+  p:last-child{margin-bottom:0}
+  /* hyphenation keeps the ragged edge quiet at this measure */
+  p{hyphens:auto;-webkit-hyphens:auto}
+
+  .lede::first-letter{
+    float:left;
+    font-size:3.5em;line-height:.82;
+    padding:.06em .1em 0 0;
+    margin-right:.02em;
+  }
+
+  .colophon{
+    margin-top:clamp(48px,9vw,88px);padding-top:1.4em;
+    border-top:1px solid var(--rule);
+    font-size:.78rem;letter-spacing:.03em;color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    body{font-size:17.5px}
+    .ground img{width:130vmin}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true">
+    <img src="bg-chapter-1.jpg" alt="">
+  </div>
+
+  <main>
+    <a class="back" href="index.html">&larr; Back to the painting</a>
+
+    <!-- chapter text: start -->
+    <header>
+      <p class="eyebrow">Chapter One</p>
+      <h1>Tim</h1>
+    </header>
+
+    <p class="lede">There is a moderate breeze, maybe twelve knots. It fills the crab-claw sail, and we’re making good speed. The sky is overcast, but one can still make out individual clouds flying over the sea. Every now and then, a rain squall catches the canoe, and I have to adjust the delicate balance between the thrust from the sail and the drag from the outrigger. When a heavier gust heels the canoe, Thor’s eyes open just long enough to register that I have it, and close again. He has not moved.</p>
+    <p>At some point, Thor and I began marking the anniversary of Kenneth’s disappearance with a sailing trip. We bring two students along, so they can practice ritual navigation, and so we can switch ends of the canoe if tacking becomes necessary. We usually chart a textbook course between islands where the sections of sightings and bird movements align with the celestial order, and we try to avoid unfavorable winds. I have to admit I’m not very good at ritual navigation under challenging conditions, and with the overcast sky and changing winds, I peek into the Accidence layer more than I’d like, to correct course. But we make a good effort every year. Sometimes Rachel joins us. Her visits to the cult are a security nightmare, but Thor is very dedicated to making them happen.</p>
+    <p>The system of islands is loosely modeled on the planetary Caroline Islands, and we’re working on extending it to all of Micronesia. The headquarters of the Ipsysaxips cult are still on the temple mountain, but some members stay permanently out in the islands. We connect to reality through a set of Essence moves that the engineers of the cult have developed over the years, partly based on Kenneth’s notes. In Kenneth’s terms, I suppose it would constitute a new, fifth bowl of Essence. Our connection to reality mirrors reality’s connection to the planet.</p>
+    <p>The central bank’s mission is to identify the Accidence bricks in planetary memory that make up the cult’s hidden mezzanine reality. From their standpoint, they distinguish between memory that is claimed by Accidence and unclaimed memory, such as newly added blocks and spare capacity. The cult prefers to operate within claimed memory, since it is someone’s property, and the central bank cannot simply wipe it periodically. They still do so from time to time, but they must communicate with the owners, and our programs usually detect that. To create any given object in reality, only a subset of the Accidence used for it is actually necessary. There is a lot of redundancy, and we have filtering algorithms that repurpose this surplus Accidence for our needs. We never linger; our algorithms crawl the memory banks, use a block for a few seconds, and then move on.</p>
+    <p>The only thing the central bank can do in the end is to randomly pick an Accidence brick, turn it over, as it were, and check whether its use seems legal. If it doesn’t, they have to contact the owner for authorization to delete or regroup the brick. They have automated the process, so it goes pretty quickly, but we have the defensive advantage. We never use contiguous memory blocks, so our information is scattered across the memory banks. We observe the central bank’s activity and the probability distributions they employ for their search patterns. It is not difficult to dynamically adjust our algorithms. Hiding our compilations on the ID is trickier, but the fifth bowl contains very elegant classes for that, too. I think that Thor’s people rank among the finest Essence specialists you can find anywhere in reality, surpassed perhaps only by Rachel.</p>
+    <p>I joined the cult a few years after Kenneth’s disappearance. I was never fully convinced of his story, but unlike Rachel, I wasn’t determined to disbelieve it either. After he vanished, I spent many hours with his notes, trying to understand some of his deeper moves, awestruck by their logic and creativity. I never managed to overcome the bane of my childhood attempts at Ludiqi, the endless debugging of my moves. But thanks to the efficient elegance of Kenneth’s code, I am proud to report that I have made some modest progress. I was particularly fascinated with the moves surrounding an individual’s projection and inversion.</p>
+    <p>One of Kenneth’s early discoveries was that other narratives, besides climate change, would compile. Some of these narratives, chief among them religious conflict, were already being discussed in fringe groups in the flow at the time, so Kenneth wasn’t the first to discover that particular one, but he greatly expanded the canon of compiling narratives. It seems he was searching for new ones right up to his disappearance. My decision to join the cult came when I found one myself. I can’t take all the credit; Kenneth was close to finding it, and his notes helped me uncover it in about two years. Then again, I had always been the one Kenneth knew would be there in the end, and that had allowed him to leave certain things undone. The narrative is fairly complex, and I’m still in the early stages of understanding it. The ramifications are manifold and confusing, but what I can grasp leads me to believe that planetary human history is far from over.</p>
+    <p>I see a lot of misguided idealism in many cult members, the very “adepts for the wrong reason” that Kenneth was concerned about. They dream of a world where the cult’s way of life supplants open reality, and that’s simply dangerous nonsense. We can live harmoniously on our little rock and in our chain of islands, but our way of life is suited for a small, homogeneous group that shares strong common beliefs and values. A large, diverse society run on our principles would most likely degenerate into totalitarianism. More realistic, in my opinion, is to work toward recognition of our way of life as one of many forms within open reality and to obtain legitimacy. Our greatest assets are our proficiency in Essence and the absence of DS in our ranks. We may be able to establish ourselves as an elite group of Essence specialists who attract and train the best talent. I’ve been pursuing this goal over the last few years, with limited success. And as I approach the age of 140, I sometimes feel tired of it all.</p>
+    <p>The reef is coming into sight, along with the entrance to the outer lagoon. Sometimes it is difficult to make out the contours of the island at night, but the sky has cleared, and the moon has come out. Once the island appeared, Thor began to meditate, and the two students settled down on the lee platform. We can moor in the inner lagoon overnight and find some hands tomorrow to help us lift the canoe out of the water and put it into one of the canoe houses to dry.</p>
+
+    <p class="colophon">From <em>Essence</em>, a novel by Eric Hillebrand. &copy; 2026 Eric Hillebrand.</p>
+    <!-- chapter text: end -->
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creation of Essence</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+    --line:rgba(38,36,32,.42);
+    --yr:2.4rem;            /* vertical space per year in the gaps */
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:400 18px/1.6 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+
+  /* the 2024 notebook page, faded to a watermark (8%) */
+  .ground{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .ground img{width:100%;height:100%;object-fit:cover;display:block}
+
+  main{
+    position:relative;z-index:1;
+    max-width:50em;margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(18px,5vw,40px) clamp(56px,10vw,120px);
+  }
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+
+  header{max-width:33em;margin:0 auto clamp(32px,6vw,56px)}
+  .eyebrow{margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+  h1{margin:0;font-weight:400;font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:.01em;line-height:1.15}
+  h1::after{content:"";display:block;width:3.2em;height:1px;background:var(--rule);margin-top:.85em}
+  .prose{max-width:33em;margin:0 auto}
+  .prose p{margin:0 0 1.3em;hyphens:auto;-webkit-hyphens:auto}
+
+  /* ---- the diary page, at the head of the line ---------------------- */
+  .origin{margin:clamp(40px,7vw,72px) auto 0;max-width:20em;text-align:center}
+  .origin img{
+    width:100%;height:auto;display:block;border-radius:2px;
+    box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 36px rgba(38,36,32,.16);
+  }
+  .origin figcaption{margin-top:.9em;font-size:.82rem;color:var(--ink-soft);line-height:1.45}
+
+  /* ---- the timeline -------------------------------------------------
+     Each row is three columns: left (the year, and how the book was
+     written) | the axis | right (what entered the story).
+     Gap rows stretch the axis in proportion to the years between
+     entries; long silences are drawn dotted. */
+  .timeline{margin:0 auto;max-width:46em}
+  .row{
+    display:grid;
+    grid-template-columns:1fr 22px 1fr;
+    grid-template-areas:"left axis right";
+    column-gap:clamp(14px,3vw,28px);
+  }
+  .left{grid-area:left;text-align:right;padding:0 0 1.6em}
+  .right{grid-area:right;padding:0 0 1.6em}
+  .axis{grid-area:axis;position:relative}
+  .axis::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1.5px solid var(--line);transform:translateX(-50%)}
+  .dot{
+    position:absolute;left:50%;top:.62em;transform:translate(-50%,0);
+    width:11px;height:11px;border-radius:50%;
+    background:var(--paper);border:1.5px solid var(--ink);
+  }
+  .turn .dot{width:17px;height:17px;top:.42em;background:var(--ink)}
+
+  .year{display:block;font-size:1.55rem;line-height:1.25;letter-spacing:.02em}
+  .how{display:block;margin-top:.35em;font-style:italic;color:var(--ink-soft);font-size:.92rem;line-height:1.45}
+  .right ul{list-style:none;margin:.35em 0 0;padding:0}
+  .right li{margin:0 0 .25em;line-height:1.45}
+  .turn .right p{margin:.3em 0 .6em;font-size:1.06rem;line-height:1.5}
+
+  .gap .axis{height:calc(var(--y) * var(--yr))}
+  .gap.quiet .axis::before{border-left:2px dotted rgba(38,36,32,.55)}
+  .stem .axis{height:2.2rem}
+
+  /* the arrow, pointing at the book */
+  .end{text-align:center;margin-top:-2px}
+  .end .shaft{width:1.5px;height:3rem;background:var(--line);margin:0 auto}
+  .end .head{width:0;height:0;margin:0 auto;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid var(--line)}
+  .end a{display:inline-block;margin-top:.9em;font-size:1.6rem;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+  .end a:hover,.end a:focus-visible{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;outline:none}
+  .end .sub{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:.4em}
+
+  .colophon{max-width:33em;margin:clamp(48px,9vw,88px) auto 0;padding-top:1.4em;border-top:1px solid var(--rule);font-size:.78rem;letter-spacing:.03em;color:var(--ink-soft)}
+
+  /* phones: one column, the axis on the left */
+  @media (max-width:680px){
+    body{font-size:17px}
+    .row{grid-template-columns:22px 1fr;grid-template-areas:"axis left" "axis right";column-gap:14px}
+    .left{text-align:left;padding-bottom:.2em}
+    .gap .axis{height:calc(var(--y) * var(--yr) * .7)}
+    .end{text-align:left;padding-left:4px}
+    .end .shaft,.end .head{margin-left:4px}
+    .origin{max-width:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true"><img src="bg-creation.jpg" alt=""></div>
+
+  <main>
+    <a class="back" href="../">&larr; Back to essence.info</a>
+
+    <header>
+      <p class="eyebrow">Essence</p>
+      <h1>Creation of Essence</h1>
+    </header>
+
+    <div class="prose">
+      <p>The idea of Essence first struck me on 20 May 2000. It was a distinct enough event that I made a laconic diary entry and took the rest of the day off. I was supposed to prepare for an exam, if I remember correctly. I knew immediately that I would see this to the end. I guessed it would take five to ten years.</p>
+      <p>In the years that followed, the work never quite stopped. Ideas came and went, and only when they became stable enough did I enter periods of intense writing activity. These were followed by long stretches where things were only simmering in my head or where my mind was in entirely different places.</p>
+      <p>This timeline shows the years I can document from notes and drafts.</p>
+    </div>
+
+    <figure class="origin">
+      <img src="diary-2000-05-20.jpg" width="1400" height="931"
+           alt="A page of squared paper. Above, the end of two mathematical formulas. Below, in a bracket, the handwritten entry: 20.5.00, Einfall Essence.">
+      <figcaption>Diary, 20 May 2000, &ldquo;Einfall Essence&rdquo;. An &ldquo;Einfall&rdquo; is an idea that suddenly pops, &ldquo;falls&rdquo;, into your mind.</figcaption>
+    </figure>
+
+    <div class="timeline">
+      <div class="row stem"><div class="axis"></div></div>
+
+      <div class="row">
+        <div class="left"><span class="year">2000</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul>
+          <li>Essence / Accidence</li>
+          <li>The ID</li>
+          <li>Accidence as money</li>
+          <li>Three friends</li>
+          <li>First description of the inversion scene</li>
+          <li>Ludiqi / Traffic (the games, but not yet the names)</li>
+          <li>The role of dreams</li>
+        </ul></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2001</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul><li>Tim&rsquo;s character describes Ludiqi (both character and game had different names then)</li></ul></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2002</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul><li>Tim&rsquo;s character approaches the house over the creek</li><li>The mezzanine</li></ul></div>
+      </div>
+
+      <div class="row gap quiet" style="--y:4"><div class="axis"></div></div>
+
+      <div class="row">
+        <div class="left"><span class="year">2007</span><span class="how">First prose in English</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul><li>Monetary theory of Accidence</li><li>The temple mountain</li><li>Ipsysaxips</li></ul></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2008</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul><li>DS</li><li>Rachel at the house mezzanine</li><li>Discussion of inversion</li></ul></div>
+      </div>
+
+      <div class="row gap quiet" style="--y:6"><div class="axis"></div></div>
+
+      <div class="row">
+        <div class="left"><span class="year">2015</span><span class="how">English only from here on</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul>
+          <li>Artists&rsquo; circle / Kenneth&rsquo;s fjord</li><li>Rachel&rsquo;s reality education</li>
+          <li>Navigation theme</li><li>Kenneth&rsquo;s disappearance</li><li>First versions of the closing chant</li>
+        </ul></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2016</span><span class="how">Several voices instead of Tim as the single narrator</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"></div>
+      </div>
+
+      <div class="row gap quiet" style="--y:2"><div class="axis"></div></div>
+
+      <div class="row">
+        <div class="left"><span class="year">2019</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul>
+          <li>Local stochastic parallelism</li>
+          <li>Ending: Rachel and Thor describe Tim&rsquo;s death</li>
+          <li>Thor as a character</li>
+          <li>More dreams</li>
+          <li>Alternative narratives</li>
+          <li>House mezzanine infiltration for the stones</li>
+        </ul></div>
+      </div>
+
+      <div class="row gap quiet" style="--y:4"><div class="axis"></div></div>
+
+      <div class="row turn">
+        <div class="left"><span class="year">2024</span><span class="how">Turning point. Two realizations:</span><span class="how">All elements are there, either on 70 A4 pages of draft or in my head.</span><span class="how">The last threshold is lowered: that I am not a native speaker can be mitigated with AI.</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2024&ndash;2025</span><span class="how">The push to write</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"><ul>
+          <li>Graduation</li>
+          <li>Thor&rsquo;s and Ben&rsquo;s stories</li>
+          <li>Yves / Yvonne</li>
+          <li>Rachel&rsquo;s career</li>
+          <li>The sting</li>
+          <li>The Caroline voyage</li>
+          <li>Time slippage</li>
+        </ul></div>
+      </div>
+
+      <div class="row">
+        <div class="left"><span class="year">2025&ndash;2026</span><span class="how">Test readers<br>Edits and consistency checks<br>Translation back to German<br>The paintings</span></div>
+        <div class="axis"><span class="dot"></span></div>
+        <div class="right"></div>
+      </div>
+
+      <div class="end">
+        <div class="shaft"></div><div class="head"></div>
+        <a href="../samples/">Essence<span class="sub">Read three sample chapters</span></a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

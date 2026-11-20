@@ -70,8 +70,8 @@ body, html {
     position: fixed;              /* was: absolute */
     left: 0;
     right: 0;
-    bottom: max(10px, env(safe-area-inset-bottom));
-    padding: 4px 12px;
+    bottom: 0;                    /* shading reaches the bottom edge */
+    padding: 4px 12px calc(4px + max(10px, env(safe-area-inset-bottom)));
     text-align: center;
     font-size: clamp(0.72rem, 1.6vw, 0.9rem);
     line-height: 1.4;
@@ -81,3 +81,58 @@ body, html {
     background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
 }
 .page-footer a { color: white; text-decoration: underline; }
+
+/* .stage is a transparent box exactly covering the visible painting
+   (the image is letterboxed by object-fit: contain), so anything placed
+   inside it stays on the painting at every window shape.
+   4286 / 3430 is the pixel size of painting_highres.jpeg; update it if
+   the image is replaced. */
+.stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 4286 / 3430;
+    width: min(100%, calc(100vh * 4286 / 3430));
+    z-index: 3;
+    pointer-events: none;
+}
+@supports (height: 100dvh) {
+  .stage { width: min(100%, calc(100dvh * 4286 / 3430)); }
+}
+
+/* Left-hand column of links to subpages, inside the painting.
+   Same typeface as the headline; size sits between the headline (2em)
+   and the footer (at most 0.9rem). */
+.site-nav {
+    position: absolute;
+    left: clamp(12px, 2.5%, 40px);
+    top: clamp(12px, 3%, 40px);
+    pointer-events: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    line-height: 1.7;
+}
+.site-nav ul { list-style: none; }
+.site-nav a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.85;
+    text-shadow: 0 0 6px rgba(0,0,0,0.35);
+    transition: opacity .2s ease;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    opacity: 1;
+    outline: none;
+}
+
+/* The typed message and its cursor. .typed-line is given the full width of the
+   message by script.js, so the prompt does not drift while typing. */
+.typed-line {
+    display: inline-flex;
+    align-items: center;
+}
+#storyText {
+    white-space: pre;   /* keep typed spaces visible as they appear */
+}

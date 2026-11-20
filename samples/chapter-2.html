@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essence &mdash; Chapter Two</title>
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#262420;
+    --ink-soft:rgba(38,36,32,.58);
+    --rule:rgba(38,36,32,.16);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font:400 19px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  }
+
+  /* the circle from the painting, inverted and toned down to a watermark */
+  .ground{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .ground img{
+    width:min(108vmin,1150px);height:auto;display:block;
+  }
+  /* paper bleeding in at the top and bottom keeps the running text clear of the rim */
+  .ground::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,
+      var(--paper) 0%, rgba(245,242,236,0) 14%,
+      rgba(245,242,236,0) 86%, var(--paper) 100%);
+  }
+
+  main{
+    position:relative;z-index:1;
+    max-width:33em;
+    margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,40px) clamp(56px,10vw,120px);
+  }
+
+  .back{
+    display:inline-block;margin-bottom:clamp(40px,8vw,72px);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .back:hover,.back:focus-visible{color:var(--ink);border-bottom-color:var(--rule)}
+
+  header{margin-bottom:clamp(32px,6vw,56px)}
+  .eyebrow{
+    margin:0 0 .55em;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1{
+    margin:0;font-weight:400;
+    font-size:clamp(1.7rem,5vw,2.5rem);
+    letter-spacing:.01em;line-height:1.15;
+  }
+  h1::after{
+    content:"";display:block;width:3.2em;height:1px;
+    background:var(--rule);margin-top:.85em;
+  }
+
+  p{margin:0 0 1.35em;text-wrap:pretty}
+  p:last-child{margin-bottom:0}
+  /* hyphenation keeps the ragged edge quiet at this measure */
+  p{hyphens:auto;-webkit-hyphens:auto}
+
+  .lede::first-letter{
+    float:left;
+    font-size:3.5em;line-height:.82;
+    padding:.06em .1em 0 0;
+    margin-right:.02em;
+  }
+
+  .colophon{
+    margin-top:clamp(48px,9vw,88px);padding-top:1.4em;
+    border-top:1px solid var(--rule);
+    font-size:.78rem;letter-spacing:.03em;color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    body{font-size:17.5px}
+    .ground img{width:130vmin}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ground" aria-hidden="true">
+    <img src="bg-chapter-2.jpg" alt="">
+  </div>
+
+  <main>
+    <a class="back" href="index.html">&larr; Back to the painting</a>
+
+    <!-- chapter text: start -->
+    <header>
+      <p class="eyebrow">Chapter Two</p>
+      <h1>Thor</h1>
+    </header>
+
+    <p class="lede">A few months after Rachel passed away, I received a message that I had access to all her files. That was unexpected. It was a lot of material, and it took my team and me weeks to sift through it all. Most of the notes were technical in nature, and they were of great interest to us, even though we had already inherited many writings from Tim and Kenneth. But then there were also her personal notes, and I found Tim’s and Kenneth’s as well. I knew of their existence, since I had seen Tim work with Kenneth’s notes, and Tim had also spoken freely of them. But after his death I could not find them anywhere, and I had suspected that they were in Rachel’s custody. Of the three sets, Rachel’s own notes were the slimmest. I was very surprised that she had given me access to all of it.</p>
+    <p>They were not in any particular order. They were interspersed with technical material, scribblings, and drawings, often just a sentence or two in the margins, some longer passages of text in separate files, some complete diary entries. A mess, really. But taken together, they painted an astonishingly coherent picture of what happened, and I took Rachel’s posthumous message as license to collate and edit them into something presentable. It took me a good bit of time to bring all the relevant pieces together and align them in a way that resembled continuous text. Throughout the process, I could never quite shake the feeling of being presumptuous and intrusive, and I cannot shake it now, writing these lines. But then why else would she have left the notes to me? I know for sure that Tim would have wanted me to do it. What was going on in Kenneth’s mind, you could never know.</p>
+    <p>I believe there is both a public interest in these events and a public right to know about them, given the profound influence Kenneth, Rachel, and Tim had on our understanding and perception of reality. Or perhaps this statement is itself presumptuous, biased toward the views of my team and our community. If there is one person left alive who knew at least two of them well over relatively long periods of their lives, and who may see some of the larger picture in all of this, I suppose it is me. So I did my best, for whatever it’s worth. Unfortunately, Ben could not help me anymore. Any inconsistencies or factual errors are likely the result of my incomplete understanding or my shoddy editing and should not reflect on our three. I restricted my own contributions to the few junctures where my role mattered and where I recalled events that were not in the notes and that I believe may help the reader understand. For the same purpose, I have also included a few excerpts from Rachel’s reality-education material, from Tim’s Accidence lectures, and from the cult’s handbook, authored by Kenneth.</p>
+    <p>Kenneth’s notes were full of poetry and chants, relevant only to the cult. I did not include those pieces here. Many were already part of the hymnal, often in newer versions. I decided to make a single exception: the oldest known version of our most popular chant, which we sing on many occasions in its newer form, is included at the end of this volume.</p>
+
+    <p class="colophon">From <em>Essence</em>, a novel by Eric Hillebrand. &copy; 2026 Eric Hillebrand.</p>
+    <!-- chapter text: end -->
+  </main>
+
+</body>
+</html>
