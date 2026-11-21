@@ -148,3 +148,33 @@ body, html {
     line-height: 1.3;
     text-shadow: 0 0 6px rgba(0,0,0,0.35);
 }
+
+/* Headline plus blurb. The headline stays at the centre of the screen;
+   the blurb hangs below it (absolutely positioned), so adding it does not
+   move the headline. */
+.centre-column {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+.blurb {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;          /* same box as the headline line: edges align */
+    margin-top: 1.4em;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.72rem, min(1.2vw, 1.9vh), 0.92rem);
+    line-height: 1.45;
+    text-align: left;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.6);
+}
+.blurb p + p { margin-top: 0.8em; }
+/* Let the headline box be as wide as its text, so the blurb (width 100%) matches it. */
+.centre-column .overlay-text { max-width: none; }
+/* On short screens, lift headline and blurb a little so the blurb clears the footer. */
+@media (max-height: 780px) and (min-width: 700px) {
+    .centre-column { transform: translateY(-7vh); }
+}
