@@ -178,3 +178,86 @@ body, html {
 @media (max-height: 780px) and (min-width: 700px) {
     .centre-column { transform: translateY(-7vh); }
 }
+
+/* ---------- Phones (portrait) and short landscape screens ----------
+   Painting full width at the top with the headline typed onto it;
+   blurb, page links and footer follow below on black, and the page scrolls.
+   The painting's height is 100vw * 3430/4286 = 80.03vw, so its middle is at 40vw. */
+@media (max-width: 700px), (max-height: 500px) {
+    body, html { height: auto; overflow: auto; }
+    body { background: black; }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        min-height: 100vh;
+    }
+    @supports (height: 100dvh) { .container { height: auto; min-height: 100dvh; } }
+
+    /* Full width, but never taller than the screen (matters on a phone held sideways) */
+    .background-image {
+        position: static;
+        width: min(100%, calc(100vh * 4286 / 3430));
+        height: auto;
+        align-self: center;
+        order: 0;
+    }
+
+    /* Headline: on the painting, centred on its middle */
+    .centre-column {
+        position: static;
+        transform: none;
+        display: block;
+        order: 1;
+    }
+    .centre-column .overlay-text {
+        position: absolute;
+        top: min(40vw, 50vh);   /* middle of the painting */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 22 characters plus cursor must fit in ~88% of the painting's width */
+        font-size: min(2em, calc((0.88 * min(100vw, 125vh) - 15px) / 13.5));
+    }
+    .cursor { height: 0.75em; width: 0.45em; }
+
+    /* Blurb: below the painting */
+    .blurb {
+        position: static;
+        width: auto;
+        margin: 0;
+        padding: 1.6em 22px 0;
+        font-size: 0.95rem;
+        line-height: 1.55;
+        text-shadow: none;
+    }
+
+    /* Page links: below the blurb */
+    .stage {
+        position: static;
+        transform: none;
+        width: auto;
+        aspect-ratio: auto;
+        order: 2;
+    }
+    .site-nav {
+        position: static;
+        padding: 1.6em 22px 0;
+        font-size: 1.05rem;
+        line-height: 2.1;
+    }
+    .site-nav a { opacity: 1; text-shadow: none; }
+    .site-nav .nav-ebook { margin-top: 0.8em; line-height: 1.5; }
+
+    /* Footer: at the end of the page instead of fixed over it */
+    .page-footer {
+        position: static;
+        order: 3;
+        margin-top: auto;
+        padding: 2.5em 22px calc(1.2em + env(safe-area-inset-bottom));
+        background: none;
+        font-size: 0.75rem;
+        opacity: 0.85;
+    }
+}
